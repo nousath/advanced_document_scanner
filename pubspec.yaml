@@ -1,0 +1,42 @@
+name: advanced_document_scanner
+description: Camera-based advanced document scanner with built-in editor (highlight, crop, rotate) and export presets (low/medium/high/max) for JPG/PNG/GIF.
+version: 0.0.1
+homepage: https://github.com/nousath/advanced_document_scanner
+repository: https://github.com/nousath/advanced_document_scanner
+issue_tracker: https://github.com/nousath/advanced_document_scanner/issues
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.16.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: 0.11.3+1
+  path: 1.9.1
+  path_provider: 2.1.5
+  image: 4.7.2
+  collection: 1.19.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.nh97.advanced_document_scanner
+        pluginClass: AdvancedDocumentScannerPlugin
+      ios:
+        pluginClass: AdvancedDocumentScannerPlugin
+
+topics:
+  - document-scanner
+  - scanner
+  - camera
+  - mlkit
+  - image-editor
+  - crop
+  - compression
