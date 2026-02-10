@@ -35,8 +35,4 @@ flutter:
 topics:
   - document-scanner
   - scanner
-  - camera
   - mlkit
-  - image-editor
-  - crop
-  - compression
