@@ -182,9 +182,7 @@ class _EditorCanvasState extends State<_EditorCanvas> {
   Offset? _dragStart;
 
   Size _boxSize = Size.zero;
-
-  Rect? get _crop => widget.cropRect01;
-
+  
   @override
   void initState() {
     super.initState();
@@ -206,16 +204,7 @@ class _EditorCanvasState extends State<_EditorCanvas> {
     final h = _boxSize.height <= 0 ? 1 : _boxSize.height;
     return Offset((local.dx / w).clamp(0, 1), (local.dy / h).clamp(0, 1));
   }
-
-  Rect _rectFrom01(Rect r) {
-    return Rect.fromLTRB(
-      r.left * _boxSize.width,
-      r.top * _boxSize.height,
-      r.right * _boxSize.width,
-      r.bottom * _boxSize.height,
-    );
-  }
-
+  
   void _onPanStart(DragStartDetails d) {
     if (_boxSize == Size.zero) return;
 
@@ -352,7 +341,7 @@ class _Toolbar extends StatelessWidget {
     return Material(
       elevation: 2,
       borderRadius: BorderRadius.circular(16),
-      color: theme.colorScheme.surface.withOpacity(0.92),
+      color: theme.colorScheme.surface.withValues(alpha: 0.92),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: Row(
@@ -415,8 +404,8 @@ class _ChipButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(999),
           color: active
-              ? theme.colorScheme.primary.withOpacity(0.12)
-              : theme.colorScheme.surfaceContainerHighest.withOpacity(0.6),
+              ? theme.colorScheme.primary.withValues(alpha: 0.12)
+              : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -452,7 +441,7 @@ class _OverlayPainter extends CustomPainter {
         ..strokeWidth = math.max(6, size.shortestSide * 0.012)
         ..strokeCap = StrokeCap.round
         ..strokeJoin = StrokeJoin.round
-        ..color = const Color(0xFFFFEB3B).withOpacity(0.55);
+        ..color = const Color(0xFFFFEB3B).withValues(alpha: 0.55);
 
       for (final stroke in strokes01) {
         if (stroke.length < 2) continue;
@@ -475,7 +464,7 @@ class _OverlayPainter extends CustomPainter {
       );
 
       // dim outside
-      final dim = Paint()..color = Colors.black.withOpacity(0.35);
+      final dim = Paint()..color = Colors.black.withValues(alpha: 0.35);
       final full = Path()..addRect(Rect.fromLTWH(0, 0, size.width, size.height));
       final hole = Path()..addRect(r);
       final outside = Path.combine(PathOperation.difference, full, hole);
@@ -541,7 +530,7 @@ Future<String> _renderAndSave({
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
-      ..color = const Color(0xFFFFEB3B).withOpacity(0.55)
+      ..color = const Color(0xFFFFEB3B).withValues(alpha: 0.55)
       ..strokeWidth = math.max(8, math.min(rotatedSize.width, rotatedSize.height) * 0.01);
 
     for (final s in strokes01) {

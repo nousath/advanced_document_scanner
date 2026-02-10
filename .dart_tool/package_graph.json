@@ -100,6 +100,11 @@
       ]
     },
     {
+      "name": "lints",
+      "version": "6.1.0",
+      "dependencies": []
+    },
+    {
       "name": "stream_channel",
       "version": "2.1.4",
       "dependencies": [
@@ -531,11 +536,6 @@
         "meta",
         "path"
       ]
-    },
-    {
-      "name": "lints",
-      "version": "6.1.0",
-      "dependencies": []
     }
   ],
   "configVersion": 1
